@@ -56,12 +56,14 @@ What gets compiled:
 interface I { }
 class C : 
 #nullable disable
-    I { }
+    I
 #nullable enable
+{ }
 class D<T> where T :
 #nullable disable
-    C { }
+    C
 #nullable enable
+{ }
 ```
 
 ## Contribute
