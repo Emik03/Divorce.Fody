@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>net6.0;netstandard2.0</TargetFrameworks>
+        <Description>Moves nullable constraints to comply with older Mono frameworks (e.g. Unity 2017) allowing you to use NRTs.</Description>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0'">
+        <OutputType>Exe</OutputType>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="FodyHelpers" Version="6.6.4" />
+    </ItemGroup>
+</Project>
