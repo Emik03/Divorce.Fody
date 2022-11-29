@@ -24,7 +24,7 @@ sealed record GenericInfo(GenericParameter? Generic, IMonoProvider? Provider)
     {
         var providerAttributes = Provider?.CustomAttributes ?? new();
 
-        IEnumerable<bool> ExterminateMetadata(Collection<CustomAttribute?>? collection) =>
+        IEnumerable<bool> ExterminateMetadata(ICollection<CustomAttribute?>? collection) =>
             collection
               ?.Where(x => x?.AttributeType?.FullName is Null)
                .For(providerAttributes.Add)
