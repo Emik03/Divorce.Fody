@@ -30,7 +30,6 @@ This project has a dependency to [Emik.Morsels](https://github.com/Emik03/Emik.M
 - If you already have a `FodyWeavers.xml` file in the root directory of your project, add the `<Divorce />` tag there. This file will be created on the first build if it doesn't exist:
 
 ```xml
-
 <Weavers>
     <Divorce />
 </Weavers>
