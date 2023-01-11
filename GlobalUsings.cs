@@ -10,12 +10,14 @@
 
 #if NET6_0
 global using Divorce.Fody;
-#else
+#elif !NET20
 global using Fody;
 #endif
 
+#if !NET20
 global using Mono.Cecil;
 global using Mono.Cecil.Rocks;
 global using IMonoProvider = Mono.Cecil.ICustomAttributeProvider;
+#endif
 
 #endregion

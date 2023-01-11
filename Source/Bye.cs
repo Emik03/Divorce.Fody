@@ -6,6 +6,7 @@
 
 #endregion
 
+#if !NET20
 namespace Divorce.Fody;
 
 #region
@@ -35,3 +36,4 @@ static class Bye
     static IEnumerable<GenericInfo> GetAllGenericParameters(TypeDefinition? x) =>
         x?.Methods?.SelectMany(GenericInfo.From).Concat(GenericInfo.From(x)) ?? Empty<GenericInfo>();
 }
+#endif

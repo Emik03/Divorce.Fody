@@ -6,6 +6,7 @@
 
 #endregion
 
+#if !NET20
 namespace Divorce.Fody;
 
 #region
@@ -47,3 +48,4 @@ sealed record GenericInfo(GenericParameter? Generic, IMonoProvider? Provider)
            .Enumerate();
     }
 }
+#endif
