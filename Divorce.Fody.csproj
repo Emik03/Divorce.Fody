@@ -2,19 +2,15 @@
     <PropertyGroup>
         <FileVersion>1.0.1</FileVersion>
         <RepositoryUrl>https://github.com/Emik03/Divorce.Fody</RepositoryUrl>
-        <TargetFrameworks><!-- net6.0 -->;netstandard2.0;net20</TargetFrameworks>
+        <TargetFrameworks><!-- net6.0; -->netstandard2.0;net20</TargetFrameworks>
         <PackageTags>Cecil Compatibility Fody ILWeaving Mono NRT Nullable Reference Type Unity</PackageTags>
         <Description>Moves nullable constraints to comply with older Mono frameworks (e.g. Unity 2017) allowing you to use NRTs.</Description>
     </PropertyGroup>
     <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0'">
         <OutputType>Exe</OutputType>
     </PropertyGroup>
-    <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
-        <PackageReference Include="FodyHelpers" Version="6.6.4" />
-    </ItemGroup>
     <ItemGroup>
-        <PackageReference Remove="Absence.Fody" />
         <PackageReference Remove="Divorce.Fody" />
-        <!-- <WeaverFiles Include="$(SharedPath)Absence.Fody/bin/netstandard2.0/Absence.Fody.dll" /> -->
+        <WeaverFiles Include="$(OutDir)$(AssemblyName).dll" />
     </ItemGroup>
 </Project>
