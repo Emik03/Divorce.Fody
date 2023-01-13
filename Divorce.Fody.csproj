@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <FileVersion>1.0.1</FileVersion>
+        <FileVersion>1.0.2</FileVersion>
         <RepositoryUrl>https://github.com/Emik03/Divorce.Fody</RepositoryUrl>
         <TargetFrameworks><!-- net6.0; -->netstandard2.0;net20</TargetFrameworks>
         <PackageTags>Cecil Compatibility Fody ILWeaving Mono NRT Nullable Reference Type Unity</PackageTags>
@@ -9,8 +9,4 @@
     <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0'">
         <OutputType>Exe</OutputType>
     </PropertyGroup>
-    <ItemGroup>
-        <PackageReference Remove="Divorce.Fody" />
-        <WeaverFiles Include="$(OutDir)$(AssemblyName).dll" />
-    </ItemGroup>
 </Project>
