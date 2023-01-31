@@ -1,5 +1,5 @@
 ﻿// SPDX-License-Identifier: MPL-2.0
-#if NET6_0
+#if !NETSTANDARD2_0
 Func(Console.ReadLine)
    .Forever()
    .Select(Invoke)

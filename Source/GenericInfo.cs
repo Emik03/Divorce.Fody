@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MPL-2.0
-#if NETSTANDARD2_0 || NET6_0
 namespace Divorce.Fody;
 
 using static Enumerable;
@@ -37,4 +36,3 @@ sealed record GenericInfo(GenericParameter? Generic, IMonoProvider? Provider)
            .Enumerate();
     }
 }
-#endif

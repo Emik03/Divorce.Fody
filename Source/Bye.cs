@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MPL-2.0
-#if NETSTANDARD2_0 || NET6_0
 namespace Divorce.Fody;
 
 using static Enumerable;
@@ -25,4 +24,3 @@ static class Bye
     static IEnumerable<GenericInfo> GetAllGenericParameters(TypeDefinition? x) =>
         x?.Methods?.SelectMany(GenericInfo.From).Concat(GenericInfo.From(x)) ?? Empty<GenericInfo>();
 }
-#endif
