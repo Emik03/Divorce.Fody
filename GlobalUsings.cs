@@ -2,5 +2,5 @@
 global using AssemblyDefinition = Mono.Cecil.AssemblyDefinition;
 global using CustomAttribute = Mono.Cecil.CustomAttribute;
 global using GenericParameter = Mono.Cecil.GenericParameter;
-global using TypeDefinition = Mono.Cecil.TypeDefinition;
 global using IMonoProvider = Mono.Cecil.ICustomAttributeProvider;
+global using TypeDefinition = Mono.Cecil.TypeDefinition;
