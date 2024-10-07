@@ -3,6 +3,7 @@
     <PropertyGroup>
         <NoTests>true</NoTests>
         <FileVersion>1.1</FileVersion>
+        <NoWarn>$(NoWarn);419;1574</NoWarn>
         <TargetFramework>netstandard2.0</TargetFramework>
         <RepositoryUrl>https://github.com/Emik03/Divorce.Fody</RepositoryUrl>
         <PackageTags>Cecil Compatibility Fody IL ILWeaving Mono NRT Nullable Reference Type Unity Weaving</PackageTags>
