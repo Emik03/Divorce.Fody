@@ -2,8 +2,6 @@
 #if NETSTANDARD2_0
 namespace Divorce.Fody;
 
-using static Enumerable;
-
 /// <summary>This weaver moves NRTs away from generic constraints.</summary>
 [CLSCompliant(false)]
 public sealed class ModuleWeaver : BaseModuleWeaver
@@ -14,15 +12,17 @@ public sealed class ModuleWeaver : BaseModuleWeaver
     /// <inheritdoc />
     public override void Execute()
     {
-        WriteInfo(typeof(ModuleWeaver).Namespace);
+        static bool IsIgnored(AssemblyNameReference x) => x is not { Name: "mscorlib" or "System", Version.Major: < 5 };
 
-        if (ModuleDefinition.Assembly is { } asm)
-            Bye.Generics(asm);
+        if (ModuleDefinition.Assembly is not { } asm)
+            WriteError("Definition lacks assembly.");
+        else if (ModuleDefinition.AssemblyReferences.OrEmpty().All(IsIgnored))
+            WriteInfo("No weaving required.");
         else
-            WriteError("Failed to get assembly for weaving");
+            Bye.Generics(asm, WriteDebug);
     }
 
     /// <inheritdoc />
-    public override IEnumerable<string> GetAssembliesForScanning() => Empty<string>();
+    public override IEnumerable<string> GetAssembliesForScanning() => [];
 }
 #endif

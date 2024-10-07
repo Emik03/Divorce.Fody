@@ -1,37 +1,37 @@
 // SPDX-License-Identifier: MPL-2.0
 namespace Divorce.Fody;
 
-using static Enumerable;
-
 /// <summary>Stores temporary information regarding a <see cref="GenericParameter" />.</summary>
 /// <param name="Generic">The generic parameter.</param>
 /// <param name="Provider">The parent member, either a method or type.</param>
 sealed record GenericInfo(GenericParameter? Generic, IMonoProvider? Provider)
 {
-    const string Null = "System.Runtime.CompilerServices.NullableAttribute";
-
     /// <summary>Creates new instances of <see cref="GenericInfo" /> lazily.</summary>
     /// <param name="x">The argument with generic parameters to create an iterable from.</param>
     /// <returns>An <see cref="IEnumerable{T}" /> of itself.</returns>
     [Pure]
     internal static IEnumerable<GenericInfo> From(IGenericParameterProvider? x) =>
-        x?.GenericParameters?.Select(y => new GenericInfo(y, x as IMonoProvider)) ?? Empty<GenericInfo>();
+        x?.GenericParameters.OrEmpty().Select(y => new GenericInfo(y, x as IMonoProvider)) ?? [];
 
     /// <summary>Removes the nullability attributes of a generic and passes it to <see cref="Provider" />.</summary>
-    internal void ExterminateAllChildMetadata()
+    /// <param name="logger">The logger to use.</param>
+    internal void ExterminateAllChildMetadata(Action<string>? logger)
     {
-        var providerAttributes = Provider?.CustomAttributes ?? new();
+        var providerAttributes = Provider?.CustomAttributes ?? [];
 
-        IEnumerable<bool> ExterminateMetadata(ICollection<CustomAttribute?>? collection) =>
+        IEnumerable<bool> ExterminateMetadata(ICollection<CustomAttribute?> collection) =>
             collection
-              ?.Where(x => x?.AttributeType?.FullName is Null)
-               .For(providerAttributes.Add)
-               .Select(collection.Remove) ??
-            Empty<bool>();
+               .Where(x => x is { AttributeType.FullName: "System.Runtime.CompilerServices.NullableAttribute" })
+               .Lazily(providerAttributes.Add)
+               .Lazily(x => logger?.Invoke($"Moving {x?.Constructor} to {Provider}."))
+               .Select(collection.Remove);
 
         Generic
           ?.Constraints
-          ?.Select(x => x?.CustomAttributes)
+           .OrEmpty()
+           .Filter()
+           .Select(x => x.CustomAttributes)
+           .Filter()
            .SelectMany(ExterminateMetadata)
            .Enumerate();
     }

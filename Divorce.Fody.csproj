@@ -2,13 +2,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <NoTests>true</NoTests>
-        <FileVersion>1.0.5</FileVersion>
-        <TargetFrameworks>net6.0;netstandard2.0;net461</TargetFrameworks>
+        <FileVersion>1.1</FileVersion>
+        <TargetFramework>netstandard2.0</TargetFramework>
         <RepositoryUrl>https://github.com/Emik03/Divorce.Fody</RepositoryUrl>
-        <PackageTags>Cecil Compatibility Fody ILWeaving Mono NRT Nullable Reference Type Unity</PackageTags>
+        <PackageTags>Cecil Compatibility Fody IL ILWeaving Mono NRT Nullable Reference Type Unity Weaving</PackageTags>
         <Description>Moves nullable constraints to comply with older Mono frameworks (e.g. Unity 2017) allowing you to use NRTs.</Description>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(TargetFramework)' != 'netstandard2.0'">
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
         <OutputType>Exe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
     </PropertyGroup>
 </Project>

@@ -1,7 +1,7 @@
 # Divorce.Fody
 
-[![NuGet package](https://img.shields.io/nuget/v/Divorce.Fody.svg?logo=NuGet)](https://www.nuget.org/packages/Divorce.Fody)
-[![License](https://img.shields.io/github/license/Emik03/Divorce.Fody.svg?style=flat)](https://github.com/Emik03/Divorce.Fody/blob/main/LICENSE)
+[![NuGet package](https://img.shields.io/nuget/v/Divorce.Fody.svg?color=50fa7b&logo=NuGet&style=for-the-badge)](https://www.nuget.org/packages/Divorce.Fody)
+[![License](https://img.shields.io/github/license/Emik03/Divorce.Fody.svg?color=6272a4&style=for-the-badge)](https://github.com/Emik03/Divorce.Fody/blob/main/LICENSE)
 
 This is an add-in for [Fody](https://github.com/Fody/Fody) which lets you use Nullable Reference Types in older Mono frameworks (e.g. Unity 2017). Named after an antonym of Unity, since this project bends libraries to conform it.
 
