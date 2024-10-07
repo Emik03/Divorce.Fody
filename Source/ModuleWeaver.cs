@@ -12,7 +12,8 @@ public sealed class ModuleWeaver : BaseModuleWeaver
     /// <inheritdoc />
     public override void Execute()
     {
-        static bool IsIgnored(AssemblyNameReference x) => x is not { Name: "mscorlib" };
+        static bool IsIgnored(AssemblyNameReference x) =>
+            x is not { Name: "mscorlib" or nameof(System), Version.Major: < 4 };
 
         if (ModuleDefinition.Assembly is not { } asm)
             WriteError("Definition lacks assembly.");

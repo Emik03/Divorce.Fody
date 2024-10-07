@@ -24,6 +24,7 @@ sealed record GenericInfo(GenericParameter? Generic, IMonoProvider? Provider)
                .Where(x => x is { AttributeType.FullName: "System.Runtime.CompilerServices.NullableAttribute" })
                .Lazily(providerAttributes.Add)
                .Lazily(x => logger($"Moving {x?.Constructor} to {Provider}."))
+               .ToIList()
                .Select(collection.Remove);
 
         Generic
