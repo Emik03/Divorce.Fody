@@ -8,7 +8,7 @@ static class Bye
     /// <param name="asm">The assembly to mutate.</param>
     /// <param name="logger">The logger to use.</param>
     /// <returns>The parameter <paramref name="asm" />.</returns>
-    internal static AssemblyDefinition Generics(AssemblyDefinition asm, Action<string>? logger = null)
+    internal static AssemblyDefinition Generics(AssemblyDefinition asm, Action<string> logger)
     {
         asm.Modules
            .ManyOrEmpty(x => x.GetAllTypes())

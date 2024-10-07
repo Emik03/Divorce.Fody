@@ -7,7 +7,7 @@ args
    .Where(File.Exists)
    .Select(AssemblyDefinition.ReadAssembly)
    .Filter()
-   .Select(Bye.Generics)
+   .Select(x => Bye.Generics(x, Console.WriteLine))
    .Lazily(x => x.Write($"Divorce.{x.MainModule?.Name}"))
    .Enumerate();
 #endif

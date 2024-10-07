@@ -15,7 +15,7 @@ sealed record GenericInfo(GenericParameter? Generic, IMonoProvider? Provider)
 
     /// <summary>Removes the nullability attributes of a generic and passes it to <see cref="Provider" />.</summary>
     /// <param name="logger">The logger to use.</param>
-    internal void ExterminateAllChildMetadata(Action<string>? logger)
+    internal void ExterminateAllChildMetadata(Action<string> logger)
     {
         var providerAttributes = Provider?.CustomAttributes ?? [];
 
@@ -23,7 +23,7 @@ sealed record GenericInfo(GenericParameter? Generic, IMonoProvider? Provider)
             collection
                .Where(x => x is { AttributeType.FullName: "System.Runtime.CompilerServices.NullableAttribute" })
                .Lazily(providerAttributes.Add)
-               .Lazily(x => logger?.Invoke($"Moving {x?.Constructor} to {Provider}."))
+               .Lazily(x => logger($"Moving {x?.Constructor} to {Provider}."))
                .Select(collection.Remove);
 
         Generic
