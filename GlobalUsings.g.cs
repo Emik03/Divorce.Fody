@@ -9,17 +9,12 @@ global using global::System.CodeDom;
 global using global::System.CodeDom.Compiler;
 global using global::System.Collections;
 global using global::System.Collections.Concurrent;
+global using global::System.Collections.Frozen;
 global using global::System.Collections.Generic;
 global using global::System.Collections.Immutable;
 global using global::System.Collections.ObjectModel;
 global using global::System.Collections.Specialized;
 global using global::System.ComponentModel;
-global using global::System.ComponentModel.Composition;
-global using global::System.ComponentModel.Composition.AttributedModel;
-global using global::System.ComponentModel.Composition.Diagnostics;
-global using global::System.ComponentModel.Composition.Hosting;
-global using global::System.ComponentModel.Composition.Primitives;
-global using global::System.ComponentModel.Composition.ReflectionModel;
 global using global::System.ComponentModel.DataAnnotations;
 global using global::System.ComponentModel.DataAnnotations.Schema;
 global using global::System.ComponentModel.Design;
@@ -27,29 +22,23 @@ global using global::System.ComponentModel.Design.Serialization;
 global using global::System.Configuration;
 global using global::System.Configuration.Assemblies;
 global using global::System.Configuration.Internal;
+global using global::System.Configuration.Provider;
 global using global::System.Data;
 global using global::System.Data.Common;
 global using global::System.Data.Odbc;
 global using global::System.Data.OleDb;
-global using global::System.Data.ProviderBase;
 global using global::System.Data.Sql;
 global using global::System.Data.SqlClient;
 global using global::System.Data.SqlTypes;
-global using global::System.Deployment;
-global using global::System.Deployment.Internal;
-global using global::System.Deployment.Internal.Isolation;
-global using global::System.Deployment.Internal.Isolation.Manifest;
 global using global::System.Diagnostics;
 global using global::System.Diagnostics.CodeAnalysis;
 global using global::System.Diagnostics.Contracts;
-global using global::System.Diagnostics.Contracts.Internal;
 global using global::System.Diagnostics.Eventing;
 global using global::System.Diagnostics.Eventing.Reader;
 global using global::System.Diagnostics.Metrics;
 global using global::System.Diagnostics.PerformanceData;
 global using global::System.Diagnostics.SymbolStore;
 global using global::System.Diagnostics.Tracing;
-global using global::System.Diagnostics.Tracing.Internal;
 global using global::System.Drawing;
 global using global::System.Drawing.Configuration;
 global using global::System.Drawing.Design;
@@ -58,61 +47,62 @@ global using global::System.Drawing.Imaging;
 global using global::System.Drawing.Printing;
 global using global::System.Drawing.Text;
 global using global::System.Dynamic;
+global using global::System.Formats;
+global using global::System.Formats.Asn1;
+global using global::System.Formats.Tar;
 global using global::System.Globalization;
 global using global::System.IO;
 global using global::System.IO.Compression;
+global using global::System.IO.Enumeration;
 global using global::System.IO.IsolatedStorage;
 global using global::System.IO.MemoryMappedFiles;
+global using global::System.IO.Packaging;
+global using global::System.IO.Pipelines;
 global using global::System.IO.Pipes;
 global using global::System.IO.Ports;
 global using global::System.Linq;
 global using global::System.Linq.Expressions;
-global using global::System.Management;
-global using global::System.Management.Instrumentation;
 global using global::System.Media;
 global using global::System.Net;
 global using global::System.Net.Cache;
-global using global::System.Net.Configuration;
 global using global::System.Net.Http;
 global using global::System.Net.Http.Headers;
+global using global::System.Net.Http.Json;
+global using global::System.Net.Http.Metrics;
 global using global::System.Net.Mail;
 global using global::System.Net.Mime;
 global using global::System.Net.NetworkInformation;
+global using global::System.Net.PeerToPeer;
+global using global::System.Net.PeerToPeer.Collaboration;
+global using global::System.Net.Quic;
 global using global::System.Net.Security;
 global using global::System.Net.Sockets;
 global using global::System.Net.WebSockets;
 global using global::System.Numerics;
-global using global::System.Numerics.Hashing;
 global using global::System.Reflection;
-global using global::System.Reflection.Context;
 global using global::System.Reflection.Emit;
+global using global::System.Reflection.Metadata;
+global using global::System.Reflection.Metadata.Ecma335;
+global using global::System.Reflection.PortableExecutable;
 global using global::System.Resources;
 global using global::System.Runtime;
 global using global::System.Runtime.CompilerServices;
-global using global::System.Runtime.CompilerServices2;
 global using global::System.Runtime.ConstrainedExecution;
-global using global::System.Runtime.DesignerServices;
 global using global::System.Runtime.ExceptionServices;
-global using global::System.Runtime.Hosting;
 global using global::System.Runtime.InteropServices;
 global using global::System.Runtime.InteropServices.ComTypes;
-global using global::System.Runtime.InteropServices.Expando;
-global using global::System.Runtime.InteropServices.TCEAdapterGen;
-global using global::System.Runtime.InteropServices.WindowsRuntime;
+global using global::System.Runtime.InteropServices.JavaScript;
+global using global::System.Runtime.InteropServices.Marshalling;
+global using global::System.Runtime.InteropServices.ObjectiveC;
+global using global::System.Runtime.InteropServices.Swift;
+global using global::System.Runtime.Intrinsics;
+global using global::System.Runtime.Intrinsics.Arm;
+global using global::System.Runtime.Intrinsics.Wasm;
+global using global::System.Runtime.Intrinsics.X86;
+global using global::System.Runtime.Loader;
 global using global::System.Runtime.Remoting;
-global using global::System.Runtime.Remoting.Activation;
-global using global::System.Runtime.Remoting.Channels;
-global using global::System.Runtime.Remoting.Contexts;
-global using global::System.Runtime.Remoting.Lifetime;
-global using global::System.Runtime.Remoting.Messaging;
-global using global::System.Runtime.Remoting.Metadata;
-global using global::System.Runtime.Remoting.Metadata.W3cXsd2001;
-global using global::System.Runtime.Remoting.Proxies;
-global using global::System.Runtime.Remoting.Services;
 global using global::System.Runtime.Serialization;
-global using global::System.Runtime.Serialization.Configuration;
-global using global::System.Runtime.Serialization.Diagnostics;
-global using global::System.Runtime.Serialization.Diagnostics.Application;
+global using global::System.Runtime.Serialization.DataContracts;
 global using global::System.Runtime.Serialization.Formatters;
 global using global::System.Runtime.Serialization.Formatters.Binary;
 global using global::System.Runtime.Serialization.Json;
@@ -121,26 +111,31 @@ global using global::System.Security;
 global using global::System.Security.AccessControl;
 global using global::System.Security.Authentication;
 global using global::System.Security.Authentication.ExtendedProtection;
-global using global::System.Security.Authentication.ExtendedProtection.Configuration;
 global using global::System.Security.Claims;
 global using global::System.Security.Cryptography;
+global using global::System.Security.Cryptography.Pkcs;
 global using global::System.Security.Cryptography.X509Certificates;
+global using global::System.Security.Cryptography.Xml;
 global using global::System.Security.Permissions;
 global using global::System.Security.Policy;
 global using global::System.Security.Principal;
-global using global::System.Security.Util;
 global using global::System.ServiceModel;
-global using global::System.ServiceModel.Channels;
-global using global::System.ServiceModel.Description;
-global using global::System.ServiceModel.Dispatcher;
-global using global::System.ServiceModel.Security;
-global using global::System.ServiceModel.Security.Tokens;
-global using global::System.StubHelpers;
+global using global::System.ServiceModel.Syndication;
+global using global::System.ServiceProcess;
 global using global::System.Text;
+global using global::System.Text.Encodings;
+global using global::System.Text.Encodings.Web;
+global using global::System.Text.Json;
+global using global::System.Text.Json.Nodes;
+global using global::System.Text.Json.Schema;
+global using global::System.Text.Json.Serialization;
+global using global::System.Text.Json.Serialization.Metadata;
 global using global::System.Text.RegularExpressions;
+global using global::System.Text.Unicode;
 global using global::System.Threading;
 global using global::System.Threading.Channels;
 global using global::System.Threading.Tasks;
+global using global::System.Threading.Tasks.Dataflow;
 global using global::System.Threading.Tasks.Sources;
 global using global::System.Timers;
 global using global::System.Transactions;
@@ -153,10 +148,7 @@ global using global::System.Xml.Linq;
 global using global::System.Xml.Resolvers;
 global using global::System.Xml.Schema;
 global using global::System.Xml.Serialization;
-global using global::System.Xml.Serialization.Advanced;
-global using global::System.Xml.Serialization.Configuration;
 global using global::System.Xml.XPath;
-global using global::System.Xml.XmlConfiguration;
 global using global::System.Xml.Xsl;
 global using global::CommunityToolkit;
 global using global::CommunityToolkit.Common;
@@ -208,45 +200,12 @@ global using global::DotNetProjectFile.Xml;
 global using global::Emik;
 global using global::Emik.Morsels;
 global using global::Fody;
-global using global::FxResources;
-global using global::FxResources.System;
-global using global::FxResources.System.Data;
-global using global::FxResources.System.Data.Common;
-global using global::FxResources.System.Diagnostics;
-global using global::FxResources.System.Diagnostics.DiagnosticSource;
-global using global::FxResources.System.Globalization;
-global using global::FxResources.System.Globalization.Extensions;
-global using global::FxResources.System.IO;
-global using global::FxResources.System.IO.Compression;
-global using global::FxResources.System.Memory;
-global using global::FxResources.System.Net;
-global using global::FxResources.System.Net.Http;
-global using global::FxResources.System.Runtime;
-global using global::FxResources.System.Runtime.InteropServices;
-global using global::FxResources.System.Runtime.InteropServices.RuntimeInformation;
-global using global::FxResources.System.Runtime.Serialization;
-global using global::FxResources.System.Runtime.Serialization.Primitives;
-global using global::FxResources.System.Security;
-global using global::FxResources.System.Security.Cryptography;
-global using global::FxResources.System.Security.Cryptography.Algorithms;
-global using global::FxResources.System.Threading;
-global using global::FxResources.System.Threading.Channels;
-global using global::FxResources.System.Threading.Overlapped;
-global using global::FxResources.System.ValueTuple;
 global using global::ILMerge;
 global using global::InlineIL;
 global using global::InlineMethod;
-global using global::Internal;
 global using global::JetBrains;
 global using global::JetBrains.Annotations;
 global using global::LocalsInit;
-global using global::MS;
-global using global::MS.Internal;
-global using global::MS.Internal.Xml;
-global using global::MS.Internal.Xml.Cache;
-global using global::MS.Internal.Xml.Linq;
-global using global::MS.Internal.Xml.Linq.ComponentModel;
-global using global::MS.Internal.Xml.XPath;
 global using global::Microsoft;
 global using global::Microsoft.CSharp;
 global using global::Microsoft.CSharp.RuntimeBinder;
@@ -255,16 +214,11 @@ global using global::Microsoft.Cci.Pdb;
 global using global::Microsoft.CodeAnalysis;
 global using global::Microsoft.CodeAnalysis.Diagnostics;
 global using global::Microsoft.CodeAnalysis.Text;
-global using global::Microsoft.Internal;
-global using global::Microsoft.Internal.Collections;
-global using global::Microsoft.Internal.Runtime;
-global using global::Microsoft.Internal.Runtime.Serialization;
-global using global::Microsoft.Reflection;
-global using global::Microsoft.Runtime;
-global using global::Microsoft.Runtime.Hosting;
 global using global::Microsoft.SqlServer;
 global using global::Microsoft.SqlServer.Server;
 global using global::Microsoft.VisualBasic;
+global using global::Microsoft.VisualBasic.CompilerServices;
+global using global::Microsoft.VisualBasic.FileIO;
 global using global::Microsoft.Win32;
 global using global::Microsoft.Win32.SafeHandles;
 global using global::Mono;
@@ -333,6 +287,8 @@ namespace System.Collections { }
 
 namespace System.Collections.Concurrent { }
 
+namespace System.Collections.Frozen { }
+
 namespace System.Collections.Generic { }
 
 namespace System.Collections.Immutable { }
@@ -342,18 +298,6 @@ namespace System.Collections.ObjectModel { }
 namespace System.Collections.Specialized { }
 
 namespace System.ComponentModel { }
-
-namespace System.ComponentModel.Composition { }
-
-namespace System.ComponentModel.Composition.AttributedModel { }
-
-namespace System.ComponentModel.Composition.Diagnostics { }
-
-namespace System.ComponentModel.Composition.Hosting { }
-
-namespace System.ComponentModel.Composition.Primitives { }
-
-namespace System.ComponentModel.Composition.ReflectionModel { }
 
 namespace System.ComponentModel.DataAnnotations { }
 
@@ -369,6 +313,8 @@ namespace System.Configuration.Assemblies { }
 
 namespace System.Configuration.Internal { }
 
+namespace System.Configuration.Provider { }
+
 namespace System.Data { }
 
 namespace System.Data.Common { }
@@ -377,29 +323,17 @@ namespace System.Data.Odbc { }
 
 namespace System.Data.OleDb { }
 
-namespace System.Data.ProviderBase { }
-
 namespace System.Data.Sql { }
 
 namespace System.Data.SqlClient { }
 
 namespace System.Data.SqlTypes { }
 
-namespace System.Deployment { }
-
-namespace System.Deployment.Internal { }
-
-namespace System.Deployment.Internal.Isolation { }
-
-namespace System.Deployment.Internal.Isolation.Manifest { }
-
 namespace System.Diagnostics { }
 
 namespace System.Diagnostics.CodeAnalysis { }
 
 namespace System.Diagnostics.Contracts { }
-
-namespace System.Diagnostics.Contracts.Internal { }
 
 namespace System.Diagnostics.Eventing { }
 
@@ -412,8 +346,6 @@ namespace System.Diagnostics.PerformanceData { }
 namespace System.Diagnostics.SymbolStore { }
 
 namespace System.Diagnostics.Tracing { }
-
-namespace System.Diagnostics.Tracing.Internal { }
 
 namespace System.Drawing { }
 
@@ -431,15 +363,27 @@ namespace System.Drawing.Text { }
 
 namespace System.Dynamic { }
 
+namespace System.Formats { }
+
+namespace System.Formats.Asn1 { }
+
+namespace System.Formats.Tar { }
+
 namespace System.Globalization { }
 
 namespace System.IO { }
 
 namespace System.IO.Compression { }
 
+namespace System.IO.Enumeration { }
+
 namespace System.IO.IsolatedStorage { }
 
 namespace System.IO.MemoryMappedFiles { }
+
+namespace System.IO.Packaging { }
+
+namespace System.IO.Pipelines { }
 
 namespace System.IO.Pipes { }
 
@@ -449,27 +393,31 @@ namespace System.Linq { }
 
 namespace System.Linq.Expressions { }
 
-namespace System.Management { }
-
-namespace System.Management.Instrumentation { }
-
 namespace System.Media { }
 
 namespace System.Net { }
 
 namespace System.Net.Cache { }
 
-namespace System.Net.Configuration { }
-
 namespace System.Net.Http { }
 
 namespace System.Net.Http.Headers { }
+
+namespace System.Net.Http.Json { }
+
+namespace System.Net.Http.Metrics { }
 
 namespace System.Net.Mail { }
 
 namespace System.Net.Mime { }
 
 namespace System.Net.NetworkInformation { }
+
+namespace System.Net.PeerToPeer { }
+
+namespace System.Net.PeerToPeer.Collaboration { }
+
+namespace System.Net.Quic { }
 
 namespace System.Net.Security { }
 
@@ -479,13 +427,15 @@ namespace System.Net.WebSockets { }
 
 namespace System.Numerics { }
 
-namespace System.Numerics.Hashing { }
-
 namespace System.Reflection { }
 
-namespace System.Reflection.Context { }
-
 namespace System.Reflection.Emit { }
+
+namespace System.Reflection.Metadata { }
+
+namespace System.Reflection.Metadata.Ecma335 { }
+
+namespace System.Reflection.PortableExecutable { }
 
 namespace System.Resources { }
 
@@ -493,53 +443,37 @@ namespace System.Runtime { }
 
 namespace System.Runtime.CompilerServices { }
 
-namespace System.Runtime.CompilerServices2 { }
-
 namespace System.Runtime.ConstrainedExecution { }
 
-namespace System.Runtime.DesignerServices { }
-
 namespace System.Runtime.ExceptionServices { }
-
-namespace System.Runtime.Hosting { }
 
 namespace System.Runtime.InteropServices { }
 
 namespace System.Runtime.InteropServices.ComTypes { }
 
-namespace System.Runtime.InteropServices.Expando { }
+namespace System.Runtime.InteropServices.JavaScript { }
 
-namespace System.Runtime.InteropServices.TCEAdapterGen { }
+namespace System.Runtime.InteropServices.Marshalling { }
 
-namespace System.Runtime.InteropServices.WindowsRuntime { }
+namespace System.Runtime.InteropServices.ObjectiveC { }
+
+namespace System.Runtime.InteropServices.Swift { }
+
+namespace System.Runtime.Intrinsics { }
+
+namespace System.Runtime.Intrinsics.Arm { }
+
+namespace System.Runtime.Intrinsics.Wasm { }
+
+namespace System.Runtime.Intrinsics.X86 { }
+
+namespace System.Runtime.Loader { }
 
 namespace System.Runtime.Remoting { }
 
-namespace System.Runtime.Remoting.Activation { }
-
-namespace System.Runtime.Remoting.Channels { }
-
-namespace System.Runtime.Remoting.Contexts { }
-
-namespace System.Runtime.Remoting.Lifetime { }
-
-namespace System.Runtime.Remoting.Messaging { }
-
-namespace System.Runtime.Remoting.Metadata { }
-
-namespace System.Runtime.Remoting.Metadata.W3cXsd2001 { }
-
-namespace System.Runtime.Remoting.Proxies { }
-
-namespace System.Runtime.Remoting.Services { }
-
 namespace System.Runtime.Serialization { }
 
-namespace System.Runtime.Serialization.Configuration { }
-
-namespace System.Runtime.Serialization.Diagnostics { }
-
-namespace System.Runtime.Serialization.Diagnostics.Application { }
+namespace System.Runtime.Serialization.DataContracts { }
 
 namespace System.Runtime.Serialization.Formatters { }
 
@@ -557,13 +491,15 @@ namespace System.Security.Authentication { }
 
 namespace System.Security.Authentication.ExtendedProtection { }
 
-namespace System.Security.Authentication.ExtendedProtection.Configuration { }
-
 namespace System.Security.Claims { }
 
 namespace System.Security.Cryptography { }
 
+namespace System.Security.Cryptography.Pkcs { }
+
 namespace System.Security.Cryptography.X509Certificates { }
+
+namespace System.Security.Cryptography.Xml { }
 
 namespace System.Security.Permissions { }
 
@@ -571,31 +507,39 @@ namespace System.Security.Policy { }
 
 namespace System.Security.Principal { }
 
-namespace System.Security.Util { }
-
 namespace System.ServiceModel { }
 
-namespace System.ServiceModel.Channels { }
+namespace System.ServiceModel.Syndication { }
 
-namespace System.ServiceModel.Description { }
-
-namespace System.ServiceModel.Dispatcher { }
-
-namespace System.ServiceModel.Security { }
-
-namespace System.ServiceModel.Security.Tokens { }
-
-namespace System.StubHelpers { }
+namespace System.ServiceProcess { }
 
 namespace System.Text { }
 
+namespace System.Text.Encodings { }
+
+namespace System.Text.Encodings.Web { }
+
+namespace System.Text.Json { }
+
+namespace System.Text.Json.Nodes { }
+
+namespace System.Text.Json.Schema { }
+
+namespace System.Text.Json.Serialization { }
+
+namespace System.Text.Json.Serialization.Metadata { }
+
 namespace System.Text.RegularExpressions { }
+
+namespace System.Text.Unicode { }
 
 namespace System.Threading { }
 
 namespace System.Threading.Channels { }
 
 namespace System.Threading.Tasks { }
+
+namespace System.Threading.Tasks.Dataflow { }
 
 namespace System.Threading.Tasks.Sources { }
 
@@ -621,13 +565,7 @@ namespace System.Xml.Schema { }
 
 namespace System.Xml.Serialization { }
 
-namespace System.Xml.Serialization.Advanced { }
-
-namespace System.Xml.Serialization.Configuration { }
-
 namespace System.Xml.XPath { }
-
-namespace System.Xml.XmlConfiguration { }
 
 namespace System.Xml.Xsl { }
 
@@ -731,83 +669,17 @@ namespace Emik.Morsels { }
 
 namespace Fody { }
 
-namespace FxResources { }
-
-namespace FxResources.System { }
-
-namespace FxResources.System.Data { }
-
-namespace FxResources.System.Data.Common { }
-
-namespace FxResources.System.Diagnostics { }
-
-namespace FxResources.System.Diagnostics.DiagnosticSource { }
-
-namespace FxResources.System.Globalization { }
-
-namespace FxResources.System.Globalization.Extensions { }
-
-namespace FxResources.System.IO { }
-
-namespace FxResources.System.IO.Compression { }
-
-namespace FxResources.System.Memory { }
-
-namespace FxResources.System.Net { }
-
-namespace FxResources.System.Net.Http { }
-
-namespace FxResources.System.Runtime { }
-
-namespace FxResources.System.Runtime.InteropServices { }
-
-namespace FxResources.System.Runtime.InteropServices.RuntimeInformation { }
-
-namespace FxResources.System.Runtime.Serialization { }
-
-namespace FxResources.System.Runtime.Serialization.Primitives { }
-
-namespace FxResources.System.Security { }
-
-namespace FxResources.System.Security.Cryptography { }
-
-namespace FxResources.System.Security.Cryptography.Algorithms { }
-
-namespace FxResources.System.Threading { }
-
-namespace FxResources.System.Threading.Channels { }
-
-namespace FxResources.System.Threading.Overlapped { }
-
-namespace FxResources.System.ValueTuple { }
-
 namespace ILMerge { }
 
 namespace InlineIL { }
 
 namespace InlineMethod { }
 
-namespace Internal { }
-
 namespace JetBrains { }
 
 namespace JetBrains.Annotations { }
 
 namespace LocalsInit { }
-
-namespace MS { }
-
-namespace MS.Internal { }
-
-namespace MS.Internal.Xml { }
-
-namespace MS.Internal.Xml.Cache { }
-
-namespace MS.Internal.Xml.Linq { }
-
-namespace MS.Internal.Xml.Linq.ComponentModel { }
-
-namespace MS.Internal.Xml.XPath { }
 
 namespace Microsoft { }
 
@@ -825,25 +697,15 @@ namespace Microsoft.CodeAnalysis.Diagnostics { }
 
 namespace Microsoft.CodeAnalysis.Text { }
 
-namespace Microsoft.Internal { }
-
-namespace Microsoft.Internal.Collections { }
-
-namespace Microsoft.Internal.Runtime { }
-
-namespace Microsoft.Internal.Runtime.Serialization { }
-
-namespace Microsoft.Reflection { }
-
-namespace Microsoft.Runtime { }
-
-namespace Microsoft.Runtime.Hosting { }
-
 namespace Microsoft.SqlServer { }
 
 namespace Microsoft.SqlServer.Server { }
 
 namespace Microsoft.VisualBasic { }
+
+namespace Microsoft.VisualBasic.CompilerServices { }
+
+namespace Microsoft.VisualBasic.FileIO { }
 
 namespace Microsoft.Win32 { }
 
