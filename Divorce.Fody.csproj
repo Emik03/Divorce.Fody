@@ -1,17 +1,21 @@
 <!-- SPDX-License-Identifier: MPL-2.0 -->
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <NoTests>true</NoTests>
-        <FileVersion>1.1.1</FileVersion>
-        <NoWarn>$(NoWarn);419;1574</NoWarn>
+        <OutputType>Exe</OutputType>
+        <FileVersion>1.1.2</FileVersion>
         <CopyrightSince>2022</CopyrightSince>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <NoWarn>$(NoWarn);CS0419;CS1574</NoWarn>
+        <TargetFramework>net9.0</TargetFramework>
         <RepositoryUrl>https://github.com/Emik03/Divorce.Fody</RepositoryUrl>
         <PackageTags>Cecil Compatibility Fody IL ILWeaving Mono NRT Nullable Reference Type Unity Weaving</PackageTags>
         <Description>Moves nullable constraints to comply with older Mono frameworks (e.g. Unity 2017) allowing you to use NRTs.</Description>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-        <OutputType>Exe</OutputType>
-        <TargetFramework>net9.0</TargetFramework>
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+        <OutputType>Library</OutputType>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <DefineConstants>$(DefineConstants);NO_SYSTEM_MEMORY</DefineConstants>
     </PropertyGroup>
+    <ItemGroup>
+        <Compile Include="$(Morsels)/Compile/**/*.cs"/>
+    </ItemGroup>
 </Project>
